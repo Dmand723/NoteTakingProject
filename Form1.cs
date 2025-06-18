@@ -1,4 +1,5 @@
 using System.Data;
+using System.Web;
 
 namespace NoteTakingProject
 {//Continue from part 1 in the assiment
@@ -47,13 +48,27 @@ namespace NoteTakingProject
 
         private void readBtn_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
-
-            if (index > -1)
+            errorProvider1.Clear();
+            try
             {
-                txtTitle.Text = table.Rows[index].ItemArray[0].ToString();
-                txtMessage.Text = table.Rows[index].ItemArray[1].ToString();
+                int index = dataGridView1.CurrentCell.RowIndex;
+                if (index > -1)
+                {
+
+                    string title = table.Rows[index].ItemArray[0].ToString();
+                    string text = table.Rows[index].ItemArray[1].ToString();
+                    Form2 secondForm = new Form2(title, text); secondForm.Show();
+                }
+    
             }
+            catch (NullReferenceException)
+            {
+                errorProvider1.SetError(dataGridView1, "No Message To Read");
+            }
+            
+
+           
+            
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -61,16 +76,14 @@ namespace NoteTakingProject
             int index = dataGridView1.CurrentCell.RowIndex;
 
             table.Rows[index].Delete();
+            txtTitle.Clear();
+            txtMessage.Clear();
         }
 
-        private void txtMessage_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        
 
-        }
+       
     }
 }

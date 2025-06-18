@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             titleLbl = new Label();
             messageLbl = new Label();
             txtTitle = new TextBox();
@@ -37,7 +38,10 @@
             saveBtn = new Button();
             readBtn = new Button();
             deleteBtn = new Button();
+            toolTip1 = new ToolTip(components);
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // titleLbl
@@ -72,7 +76,6 @@
             txtMessage.Name = "txtMessage";
             txtMessage.Size = new Size(125, 126);
             txtMessage.TabIndex = 3;
-            txtMessage.TextChanged += txtMessage_TextChanged;
             // 
             // dataGridView1
             // 
@@ -89,7 +92,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(192, 188);
             dataGridView1.TabIndex = 4;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // newBtn
             // 
@@ -118,6 +120,7 @@
             readBtn.Size = new Size(94, 29);
             readBtn.TabIndex = 7;
             readBtn.Text = "Read";
+            toolTip1.SetToolTip(readBtn, "This will open a new page");
             readBtn.UseVisualStyleBackColor = true;
             readBtn.Click += readBtn_Click;
             // 
@@ -130,6 +133,15 @@
             deleteBtn.Text = "Delete";
             deleteBtn.UseVisualStyleBackColor = true;
             deleteBtn.Click += deleteBtn_Click;
+            // 
+            // toolTip1
+            // 
+            toolTip1.ToolTipTitle = "Info";
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            errorProvider1.RightToLeft = true;
             // 
             // Form1
             // 
@@ -149,6 +161,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -164,5 +177,7 @@
         private Button saveBtn;
         private Button readBtn;
         private Button deleteBtn;
+        private ToolTip toolTip1;
+        private ErrorProvider errorProvider1;
     }
 }
