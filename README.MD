@@ -40,4 +40,4 @@ A simple Windows Forms application for creating, saving, reading, and deleting n
 - `Form1.cs` - Main form for note management.
 - `Form2.cs` - Displays the full content of a selected note.
 - `Form1.Designer.cs` - UI layout for the main form.
-- `Form@.Designer.cs` - UI layout for the seccond form.
+- `Form2.Designer.cs` - UI layout for the seccond form.
